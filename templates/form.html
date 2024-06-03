@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/mount.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%,100%;
+            margin-top: 30px;
+            margin-left: 0px;
+            padding: 0;
+            
+            
+        }
+        .container {
+            background-color: #b5d0d9;
+            margin-left: 350px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .container h2 {
+            text-align: center;
+            color: #333;
+        }
+        head{
+            margin-top: 20px;
+            padding: 0;
+        }
+        .head h1,h5{
+            text-align: center;
+            color: #fff;
+            
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        select,input[type="text"] {
+            margin-bottom: 5px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1 style="font-size: 48px;">Mental Health Prediction</h1>
+        <h5>Predict the probability whether a person requires Mental Treatment</h5>
+    </div>
+    <div class="container">
+        <h2>User Input</h2>
+        <form action="/predict" method="post">
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age">
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="trans">Trans</option>
+            </select>
+
+            <label for="family_history">Any Family History?</label>
+            <select name="family_history" id="family_history">
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="benefits">Have you perceived any benefits?</label>
+            <select name="benefits" id="benefits">
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="don't know">Don't know</option>
+            </select>
+
+            <label for="care_options">Is there anyone who cares for you?</label>
+            <select name="care_options" id="care_options">
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="not sure">Not sure</option>
+            </select>
+
+            <label for="anonymity">Prefer anonymity </label>
+            <select name="anonymity" id="anonymity">
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="don't know">Don't know</option>
+            </select>
+
+            <label for="leave">How do you take leaves?</label>
+            <select name="leave" id="leave">
+                <option value="">Select</option>
+                <option value="Very easy">Very easy</option>
+                <option value="Somewhat easy">Somewhat easy</option>
+                <option value="Somewhat difficult">Somewhat difficult</option>
+                <option value="Very difficult">Very difficult</option>
+                <option value="Don't know">Don't know</option>
+            </select>
+
+            <label for="work_interfere">Have experienced difficulties at work?</label>
+            <select name="work_interfere" id="work_interfere">
+                <option value="">Select</option>
+                <option value="Never">Never</option>
+                <option value="Rarely">Rarely</option>
+                <option value="Sometimes">Sometimes</option>
+                <option value="Often">Often</option>
+                <option value="Don't know">Don't know</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+        <p>Your predicted result is: <strong>{{ result }}</strong></p>
+    </div>
+</body>
+</html>
